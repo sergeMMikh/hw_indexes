@@ -36,10 +36,10 @@ where date(p.payment_date) = '2005-07-30' and p.payment_date = r.rental_date and
 
 Результат выполнения запроса с EXPLAIN FORMAT = tree
   
-  <img src="images/Task_2_1.png" alt="Task_2_1_.png" width="200" height="auto">
+  <img src="images/Task_2_1.png" alt="Task_2_1_.png" width="750" height="auto">
 
   Здесь **наиболее** тонкие места: 
-   - *Nested loop inner join* - вложенные петли внутреннего объеденения таблиц, что возможно соответствует переборке таблиц ``` from payment p, rental r, customer c, inventory i, film f ``` для агрегирующей (оконной функции) [https://habr.com/ru/articles/664000/] *SUM*
+   - *Nested loop inner join* - вложенные петли внутреннего объеденения таблиц, что возможно соответствует переборке таблиц ``` from payment p, rental r, customer c, inventory i, film f ``` для агрегирующей [оконной функции](https://habr.com/ru/articles/664000/) *SUM*
    - Хэширование *Inner hash join* внутреннее хэширование и поиск по индексу
    - Фильтрация *Filter: (cast(p.payment_date as date)* выполнение условия WHERE и сканирование всей таблицы *payment*
 
