@@ -9,12 +9,15 @@
 **Решение**
 
 ```
-
+SELECT SUM(index_length)/SUM(data_length)*100 AS percentage 
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_TYPE = 'BASE TABLE'
+AND TABLE_SCHEMA = 'sakila';
 ```
 
 - результат
   
-  <img src="images/Task_1_.png" alt="Task_1_.png" width="750" height="auto">
+  <img src="images/Task_1.png" alt="Task_1_.png" width="200" height="auto">
 
 ---
 
