@@ -74,9 +74,23 @@ and i.inventory_id = r.inventory_id;
 
 <img src="images/Task_2_9.png" alt="Task_2_9.png" width="750" height="auto">
 
-- результат
-  
-  <img src="images/Task_1_.png" alt="Task_1_.png" width="750" height="auto">
+Далее решил избавится от оконной функции, тем самым упростить сам запрос:
+
+```
+select distinct 
+concat(c.last_name, ' ', c.first_name), 
+sum(p.amount)
+from payment p JOIN customer c on p.customer_id  = c.customer_id 
+where date(p.payment_date) = '2005-07-30' 
+group by p.customer_id;
+```
+Сам результат выборки не изменился (см. JOHNSON PATRICIA):
+
+<img src="images/Task_2_10.png" alt="Task_2_10.png" width="500" height="auto">
+
+Результаты анализа на этот раз показал значительное ускаорение процесса.
+
+<img src="images/Task_2_11.png" alt="Task_2_11.png" width="750" height="auto">
 
 ---
 
