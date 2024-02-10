@@ -8,6 +8,17 @@
 
 **Решение**
 
+Если проверить список всех таблиц, что выдаст системный запрос *INFORMATION_SCHEMA.TABLES*, то получим много лишнего:
+
+```
+SELECT TABLE_SCHEMA, COUNT( TABLE_SCHEMA ) 
+FROM INFORMATION_SCHEMA.TABLES
+GROUP BY TABLE_SCHEMA;
+```
+<img src="images/Task_1_1_.png" alt="Task_1_1.png" width="300" height="auto">
+
+Для получения адекватного ответа отсечём всё лишнее:
+
 ```sql
 SELECT SUM(index_length)/SUM(data_length)*100 AS percentage 
 FROM INFORMATION_SCHEMA.TABLES
@@ -88,7 +99,7 @@ group by p.customer_id;
 
 <img src="images/Task_2_10.png" alt="Task_2_10.png" width="500" height="auto">
 
-Результаты анализа на этот раз показал значительное ускаорение процесса.
+Результаты анализа на этот раз показал значительное ускорение процесса.
 
 <img src="images/Task_2_11.png" alt="Task_2_11.png" width="750" height="auto">
 
