@@ -47,7 +47,7 @@ and i.inventory_id = r.inventory_id;
   
   <img src="images/Task_2_1.png" alt="Task_2_1.png" width="750" height="auto">
 
-  Спускаясь по иерархии дерева через Здесь *Nested loop inner join* - вложенные петли внутреннего объеденения таблиц ``from payment p, rental r, customer c, inventory i, film f``` для [агрегирующей оконной функции](https://habr.com/ru/articles/664000/) *SUM* можно определить **наиболее** тонкие места: 
+  Спускаясь по иерархии дерева через Здесь *Nested loop inner join* - вложенные петли внутреннего объеденения таблиц ``from payment p, rental r, customer c, inventory i, film f``` для [агрегирующей оконной функции](https://habr.com/ru/articles/664000/) *SUM* можно определить наиболее тонкие места: 
    - Хэширование *Inner hash join* внутреннее хэширование и поиск по индексу
    - Фильтрация *Filter: (cast(p.payment_date as date)* выполнение условия WHERE и сканирование всей таблицы *payment*
 
@@ -57,8 +57,12 @@ and i.inventory_id = r.inventory_id;
 
 **Оптимизация**
 
-Выборка из таблицы film не вляет на конечный результат и упрощение функции до ```sum(p.amount) over (partition by c.customer_id)``` не меняет результата. Так же можно связать платежи с клиентом напрямую, уменьшая список таблиц.
+Выборка из таблицы film не вляет на конечный результат и упрощение функции до ```sum(p.amount) over (partition by c.customer_id)``` не меняет итоговой картины. Так же напрямую можно связать платежи с клиентом, уменьшая список таблиц.
   <img src="images/Task_2_5_2.png" alt="Task_2_5_2.png" width="500" height="auto">
+
+Теперь в дереве работы анализа скрипта основной лимитирующий процесс- фильтрация данных по дате покупки: *Filter: (cast(p.payment_date as date) = '2005-07-30')  (cost=1633 rows=16086)*
+
+<img src="images/Task_2_6.png" alt="Task_2_6.png" width="750" height="auto">
 
 
 
