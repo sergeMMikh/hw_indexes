@@ -66,7 +66,13 @@ and i.inventory_id = r.inventory_id;
 
 Здесь для оптимизации процесса можно создать индекс: ```create index day_of_payment on payment(payment_date);```
 
-<img src="images/Task_2_7.png" alt="Task_2_7.png" width="300" height="auto">
+<img src="images/Task_2_7.png" alt="Task_2_7.png" width="500" height="auto">
+
+<img src="images/Task_2_8.png" alt="Task_2_8.png" width="500" height="auto">
+
+Но эффекта это не возымело:
+
+<img src="images/Task_2_9.png" alt="Task_2_9.png" width="500" height="auto">
 
 - результат
   
