@@ -38,6 +38,10 @@ and i.inventory_id = r.inventory_id;
 
 **Решение**
 
+Результат выполнения скрипта:
+  
+  <img src="images/Task_2_4.png" alt="Task_2_4.png" width="500" height="auto">
+
 Результат выполнения запроса с EXPLAIN FORMAT = tree
   
   <img src="images/Task_2_1.png" alt="Task_2_1.png" width="750" height="auto">
@@ -48,9 +52,13 @@ and i.inventory_id = r.inventory_id;
    - Фильтрация *Filter: (cast(p.payment_date as date)* выполнение условия WHERE и сканирование всей таблицы *payment*
    - Поиск по *rental_date* в таблице *rental*
 
-Только поиск в таблице *film* осуществляется по индексам (результат выполнения запроса с EXPLAIN)
+Только поиск в таблице *film* осуществляется по индексам (результат выполнения запроса с EXPLAIN).
   
   <img src="images/Task_2_3.png" alt="Task_2_3.png" width="750" height="auto">
+
+ Однако выборка из таблицы film не вляет на конечный результат и упрощение функции до ```sum(p.amount) over (partition by c.customer_id)``` не меняет результата. Назовём это певым упрощением скрипта:
+
+  <img src="images/Task_2_5_.png" alt="Task_2_5_.png" width="500" height="auto">
 
 ```sql
 select distinct concat(c.last_name, ' ', c.first_name), sum(p.amount) over (partition by c.customer_id, f.title)
