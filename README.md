@@ -64,7 +64,9 @@ and i.inventory_id = r.inventory_id;
 
 <img src="images/Task_2_6.png" alt="Task_2_6.png" width="750" height="auto">
 
+Здесь для оптимизации процесса можно создать индекс: ```create index day_of_payment on payment(payment_date);```
 
+<img src="images/Task_2_7.png" alt="Task_2_7.png" width="300" height="auto">
 
 - результат
   
