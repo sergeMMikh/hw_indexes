@@ -10,7 +10,7 @@
 
 Если проверить список всех таблиц, что выдаст системный запрос *INFORMATION_SCHEMA.TABLES*, то получим много лишнего:
 
-```
+```sql
 SELECT TABLE_SCHEMA, COUNT( TABLE_SCHEMA ) 
 FROM INFORMATION_SCHEMA.TABLES
 GROUP BY TABLE_SCHEMA;
