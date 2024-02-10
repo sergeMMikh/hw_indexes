@@ -72,7 +72,7 @@ and i.inventory_id = r.inventory_id;
 
 Но эффекта это не возымело:
 
-<img src="images/Task_2_9.png" alt="Task_2_9.png" width="500" height="auto">
+<img src="images/Task_2_9.png" alt="Task_2_9.png" width="750" height="auto">
 
 - результат
   
